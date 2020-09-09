@@ -9,6 +9,7 @@ class App extends React.Component {
       age: "",
       gender: "",
       location: "",
+      diet: "",
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -68,7 +69,7 @@ class App extends React.Component {
             Female
           </label>
           <br />
-          <label>You are travelling to: </label>
+          <label>You are travelling to </label>
 
           <select
             name="location"
@@ -79,9 +80,53 @@ class App extends React.Component {
             <option value="Argentina">Argentina</option>
             <option value="Mexico">Mexico</option>
           </select>
-
           <br />
-          {/* check boxes for dietary restrictions here */}
+          <label>Dietary restrictions</label>
+          <br />
+          <label>
+            <input
+              type="checkbox"
+              name="diet"
+              value="vegetarian"
+              checked={this.state.diet === "vegetarian"}
+              onChange={this.handleChange}
+            />
+            Vegetarian
+          </label>
+          <br />
+          <label>
+            <input
+              type="checkbox"
+              name="diet"
+              value="kosher"
+              checked={this.state.diet === "kosher"}
+              onChange={this.handleChange}
+            />
+            Kosher
+          </label>
+          <br />
+          <label>
+            <input
+              type="checkbox"
+              name="diet"
+              value="vegan"
+              checked={this.state.diet === "vegan"}
+              onChange={this.handleChange}
+            />
+            Vegan
+          </label>
+          <br />
+          <label>
+            <input
+              type="checkbox"
+              name="diet"
+              value="gluten free"
+              checked={this.state.diet === "gluten free"}
+              onChange={this.handleChange}
+            />
+            Gluten free
+          </label>
+          {/* check boxes for vegetarian, kosher, lactose free,*/}
           <br />
           <button>Submit</button>
         </form>
@@ -93,10 +138,7 @@ class App extends React.Component {
         <p>Your age: {this.state.age}</p>
         <p>Your gender: {this.state.gender}</p>
         <p>Your destination: {this.state.location}</p>
-        <p>
-          Your dietary restrictions:{" "}
-          {/* Dietary restrictions here, comma separated */}
-        </p>
+        <p>Your dietary restrictions: {this.state.diet}</p>
       </main>
     );
   }
