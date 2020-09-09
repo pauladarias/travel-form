@@ -7,6 +7,7 @@ class App extends React.Component {
       firstName: "",
       lastName: "",
       age: "",
+      gender: "",
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -45,8 +46,35 @@ class App extends React.Component {
             onChange={this.handleChange}
           />
           <br />
-          {/* radio buttons for gender here */}
+          <label>
+            <input
+              type="checkbox"
+              name="gender"
+              value="male"
+              checked={this.state.gender === "male"}
+              onChange={this.handleChange}
+            />{" "}
+            Male
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="gender"
+              value="female"
+              checked={this.state.gender === "female"}
+              onChange={this.handleChange}
+            />{" "}
+            Female
+          </label>
           <br />
+          <label>
+            <p>You are travelling to:</p>
+            <select>
+              <option>Japan</option>
+              <option>Argentina</option>
+              <option>Mexico</option>
+            </select>
+          </label>
           {/* select box for location here */}
           <br />
           {/* check boxes for dietary restrictions here */}
@@ -59,7 +87,7 @@ class App extends React.Component {
           Your name: {this.state.firstName} {this.state.lastName}
         </p>
         <p>Your age: {this.state.age}</p>
-        <p>Your gender: {/* Gender here */}</p>
+        <p>Your gender: {this.state.gender}</p>
         <p>Your destination: {/* Destination here */}</p>
         <p>
           Your dietary restrictions:{" "}
