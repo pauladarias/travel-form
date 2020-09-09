@@ -9,21 +9,34 @@ class App extends React.Component {
       age: "",
       gender: "",
       location: "",
-      diet: "",
+      isVegetarian: false,
+      isKosher: false,
+      isVegan: false,
+      isGlutenFree: false,
     };
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(event) {
-    this.setState({
-      [event.target.name]: event.target.value,
-    });
+    const { name, value, type, checked } = event.target;
+    type === "checkbox"
+      ? this.setState({
+          [name]: checked,
+        })
+      : this.setState({
+          [name]: value,
+        });
+  }
+
+  handleSubmit(event) {
+    alert("Your details: " + this.state.name);
+    event.preventDefault();
   }
 
   render() {
     return (
       <main>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <input
             type="text"
             value={this.state.firstName}
@@ -50,7 +63,7 @@ class App extends React.Component {
           <br />
           <label>
             <input
-              type="checkbox"
+              type="radio"
               name="gender"
               value="male"
               checked={this.state.gender === "male"}
@@ -60,7 +73,7 @@ class App extends React.Component {
           </label>
           <label>
             <input
-              type="checkbox"
+              type="radio"
               name="gender"
               value="female"
               checked={this.state.gender === "female"}
@@ -69,13 +82,13 @@ class App extends React.Component {
             Female
           </label>
           <br />
-          <label>You are travelling to </label>
 
           <select
             name="location"
             value={this.state.location}
             onChange={this.handleChange}
           >
+            <option value="">Choose your destination</option>
             <option value="Japan">Japan</option>
             <option value="Argentina">Argentina</option>
             <option value="Mexico">Mexico</option>
@@ -86,9 +99,8 @@ class App extends React.Component {
           <label>
             <input
               type="checkbox"
-              name="diet"
-              value="vegetarian"
-              checked={this.state.diet === "vegetarian"}
+              name="isVegetarian"
+              checked={this.state.isVegetarian}
               onChange={this.handleChange}
             />
             Vegetarian
@@ -97,9 +109,8 @@ class App extends React.Component {
           <label>
             <input
               type="checkbox"
-              name="diet"
-              value="kosher"
-              checked={this.state.diet === "kosher"}
+              name="isKosher"
+              checked={this.state.isKosher}
               onChange={this.handleChange}
             />
             Kosher
@@ -108,9 +119,8 @@ class App extends React.Component {
           <label>
             <input
               type="checkbox"
-              name="diet"
-              value="vegan"
-              checked={this.state.diet === "vegan"}
+              name="isVegan"
+              checked={this.state.isVegan}
               onChange={this.handleChange}
             />
             Vegan
@@ -119,16 +129,16 @@ class App extends React.Component {
           <label>
             <input
               type="checkbox"
-              name="diet"
-              value="gluten free"
-              checked={this.state.diet === "gluten free"}
+              name="isGlutenFree"
+              checked={this.state.isGlutenFree}
               onChange={this.handleChange}
             />
             Gluten free
           </label>
-          {/* check boxes for vegetarian, kosher, lactose free,*/}
           <br />
-          <button>Submit</button>
+          <button type="submit" name="submit">
+            Submit
+          </button>
         </form>
         <hr />
         <h2>Entered Information:</h2>
@@ -138,7 +148,13 @@ class App extends React.Component {
         <p>Your age: {this.state.age}</p>
         <p>Your gender: {this.state.gender}</p>
         <p>Your destination: {this.state.location}</p>
-        <p>Your dietary restrictions: {this.state.diet}</p>
+        <p>
+          Your dietary restrictions:
+          {this.state.isVegetarian ? "Vegetarian," : ""}{" "}
+          {this.state.isKosher ? "Kosher," : ""}{" "}
+          {this.state.isVegan ? "Vegan," : ""}{" "}
+          {this.state.isGlutenFree ? "Gluten Free" : ""}{" "}
+        </p>
       </main>
     );
   }
