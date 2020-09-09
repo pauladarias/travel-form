@@ -15,6 +15,7 @@ class App extends React.Component {
       isGlutenFree: false,
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
@@ -29,7 +30,11 @@ class App extends React.Component {
   }
 
   handleSubmit(event) {
-    alert("Your details: " + this.state.name);
+    alert(
+      "Your details have been submitted " +
+        this.state.firstName +
+        " we will get in touch shortly."
+    );
     event.preventDefault();
   }
 
@@ -150,10 +155,15 @@ class App extends React.Component {
         <p>Your destination: {this.state.location}</p>
         <p>
           Your dietary restrictions:
-          {this.state.isVegetarian ? "Vegetarian," : ""}{" "}
-          {this.state.isKosher ? "Kosher," : ""}{" "}
-          {this.state.isVegan ? "Vegan," : ""}{" "}
-          {this.state.isGlutenFree ? "Gluten Free" : ""}{" "}
+          {"  "}
+          {this.state.isVegetarian ? "Vegetarian" : ""}
+          {"  "}
+          {this.state.isKosher ? "Kosher" : ""}
+          {"  "}
+          {this.state.isVegan ? "Vegan" : ""}
+          {"  "}
+          {this.state.isGlutenFree ? "Gluten Free" : ""}
+          {"  "}
         </p>
       </main>
     );

@@ -3,4 +3,14 @@ body {
   margin: 0;
   padding: 0;
   background-color: aquamarine;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+main {
+  background-color: beige;
+  margin: 3em auto;
+  max-width: 60%;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
 }
