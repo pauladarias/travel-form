@@ -1,26 +1,73 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      firstName: "",
+      lastName: "",
+      age: "",
+    };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
+  }
+
+  render() {
+    return (
+      <main>
+        <form>
+          <input
+            type="text"
+            value={this.state.firstName}
+            name="firstName"
+            placeholder="First Name"
+            onChange={this.handleChange}
+          />
+          <br />
+          <input
+            type="text"
+            value={this.state.lastName}
+            name="lastName"
+            placeholder="Last Name"
+            onChange={this.handleChange}
+          />
+          <br />
+          <input
+            type="number"
+            value={this.state.age}
+            name="age"
+            placeholder="Age"
+            onChange={this.handleChange}
+          />
+          <br />
+          {/* radio buttons for gender here */}
+          <br />
+          {/* select box for location here */}
+          <br />
+          {/* check boxes for dietary restrictions here */}
+          <br />
+          <button>Submit</button>
+        </form>
+        <hr />
+        <h2>Entered Information:</h2>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Your name: {this.state.firstName} {this.state.lastName}
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+        <p>Your age: {this.state.age}</p>
+        <p>Your gender: {/* Gender here */}</p>
+        <p>Your destination: {/* Destination here */}</p>
+        <p>
+          Your dietary restrictions:{" "}
+          {/* Dietary restrictions here, comma separated */}
+        </p>
+      </main>
+    );
+  }
 }
 
 export default App;
