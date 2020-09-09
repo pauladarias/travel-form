@@ -8,6 +8,7 @@ class App extends React.Component {
       lastName: "",
       age: "",
       gender: "",
+      location: "",
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -67,15 +68,18 @@ class App extends React.Component {
             Female
           </label>
           <br />
-          <label>
-            <p>You are travelling to:</p>
-            <select>
-              <option>Japan</option>
-              <option>Argentina</option>
-              <option>Mexico</option>
-            </select>
-          </label>
-          {/* select box for location here */}
+          <label>You are travelling to: </label>
+
+          <select
+            name="location"
+            value={this.state.location}
+            onChange={this.handleChange}
+          >
+            <option value="Japan">Japan</option>
+            <option value="Argentina">Argentina</option>
+            <option value="Mexico">Mexico</option>
+          </select>
+
           <br />
           {/* check boxes for dietary restrictions here */}
           <br />
@@ -88,7 +92,7 @@ class App extends React.Component {
         </p>
         <p>Your age: {this.state.age}</p>
         <p>Your gender: {this.state.gender}</p>
-        <p>Your destination: {/* Destination here */}</p>
+        <p>Your destination: {this.state.location}</p>
         <p>
           Your dietary restrictions:{" "}
           {/* Dietary restrictions here, comma separated */}
